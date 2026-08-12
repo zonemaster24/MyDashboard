@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>My Dashboard</title>
 
@@ -19,28 +19,26 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #edf2f7;
     }
 
     body {
-      overflow: hidden;
-    }
 
-
-    /* ==============================
-       LOGIN SCREEN
-       ============================== */
-
-    #login-screen {
-      width: 100%;
-      height: 100vh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family:
+        'Segoe UI',
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
 
       background: #edf2f7;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      overflow: hidden;
     }
 
 
@@ -48,20 +46,22 @@
 
       background: #ffffff;
 
-      width: 380px;
+      width: 475px;
+
       max-width: 90%;
 
       padding: 40px;
-      padding-top: 105px;
 
-      border-radius: 18px;
+      padding-top: 135px;
+
+      border-radius: 20px;
 
       text-align: center;
 
-      box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.12);
-
       position: relative;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.12);
     }
 
 
@@ -69,11 +69,13 @@
 
       position: absolute;
 
-      width: 150px;
-      height: 150px;
+      width: 190px;
+
+      height: 190px;
 
       left: 50%;
-      top: -75px;
+
+      top: -95px;
 
       transform: translateX(-50%);
 
@@ -81,82 +83,67 @@
 
       border-radius: 50%;
 
-      border: 5px solid #ffffff;
+      border: 6px solid #ffffff;
 
       box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.18);
+        0 8px 25px rgba(0,0,0,0.18);
     }
 
 
-    .login-card h2 {
+    h2 {
 
-      margin: 0 0 10px;
+      margin: 0 0 12px;
 
-      color: #1a202c;
+      color: #12345b;
 
-      font-size: 25px;
+      font-size: 32px;
 
       font-weight: 600;
     }
 
 
-    .login-card p {
-
-      margin: 0 0 20px;
+    p {
 
       color: #718096;
 
-      font-size: 15px;
+      font-size: 17px;
+
+      margin: 0 0 30px;
 
       line-height: 1.5;
     }
 
 
-    #user-email {
-
-      display: none;
-
-      margin-bottom: 20px;
-
-      padding: 10px;
-
-      background: #f7fafc;
-
-      border-radius: 8px;
-
-      color: #4a5568;
-
-      font-size: 14px;
-
-      word-break: break-all;
-    }
-
-
-    #login-button {
+    .btn-signin {
 
       width: 100%;
 
-      padding: 14px 20px;
+      padding: 15px 20px;
 
       border: none;
 
-      border-radius: 8px;
+      border-radius: 9px;
 
       background: #4285f4;
 
       color: white;
 
-      font-size: 16px;
+      font-size: 17px;
 
       font-weight: 600;
 
       cursor: pointer;
 
-      transition: 0.2s;
+      box-shadow:
+        0 4px 8px rgba(66,133,244,0.25);
+
+      transition:
+        background 0.2s,
+        transform 0.2s;
     }
 
 
-    #login-button:hover {
+    .btn-signin:hover {
 
       background: #357ae8;
 
@@ -164,270 +151,40 @@
     }
 
 
-    #login-button:disabled {
+    .btn-signin:active {
 
-      background: #a0aec0;
-
-      cursor: not-allowed;
-
-      transform: none;
+      transform: translateY(0);
     }
 
 
-    #status {
+    .status {
 
-      margin-top: 15px;
-
-      font-size: 13px;
+      margin-top: 18px;
 
       color: #718096;
-    }
-
-
-    #error {
-
-      display: none;
-
-      margin-top: 15px;
-
-      padding: 10px;
-
-      border-radius: 7px;
-
-      background: #fff5f5;
-
-      color: #c53030;
-
-      font-size: 13px;
-    }
-
-
-    /* ==============================
-       DASHBOARD
-       ============================== */
-
-    #dashboard {
-
-      display: none;
-
-      width: 100%;
-      height: 100vh;
-
-      overflow: hidden;
-    }
-
-
-    .dashboard-header {
-
-      height: 60px;
-
-      background: #1a365d;
-
-      color: white;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      padding: 0 20px;
-    }
-
-
-    .dashboard-title {
-
-      font-size: 20px;
-
-      font-weight: 600;
-    }
-
-
-    .logged-user {
 
       font-size: 13px;
 
-      opacity: 0.9;
-    }
-
-
-    .dashboard-body {
-
-      display: flex;
-
-      width: 100%;
-
-      height: calc(100vh - 60px);
-    }
-
-
-    /* ==============================
-       LEFT MENU
-       ============================== */
-
-    .sidebar {
-
-      width: 230px;
-
-      min-width: 230px;
-
-      background: #ffffff;
-
-      border-right: 1px solid #e2e8f0;
-
-      padding: 15px 10px;
-
-      overflow-y: auto;
-    }
-
-
-    .menu-title {
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      color: #a0aec0;
-
-      padding: 10px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-    }
-
-
-    .menu-button {
-
-      width: 100%;
-
-      border: none;
-
-      background: transparent;
-
-      text-align: left;
-
-      padding: 12px 13px;
-
-      margin-bottom: 4px;
-
-      border-radius: 7px;
-
-      color: #2d3748;
-
-      font-size: 14px;
-
-      cursor: pointer;
-
-      transition: 0.15s;
-    }
-
-
-    .menu-button:hover {
-
-      background: #edf2f7;
-    }
-
-
-    .menu-button.active {
-
-      background: #4285f4;
-
-      color: white;
-    }
-
-
-    /* ==============================
-       RIGHT CONTENT
-       ============================== */
-
-    .content {
-
-      flex: 1;
-
-      height: 100%;
-
-      background: #edf2f7;
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-
-    #welcome-screen {
-
-      width: 100%;
-
-      height: 100%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      text-align: center;
-
-      color: #718096;
-    }
-
-
-    #welcome-screen h2 {
-
-      color: #2d3748;
-
-      margin-bottom: 8px;
-    }
-
-
-    .app-frame {
-
       display: none;
-
-      width: 100%;
-
-      height: 100%;
-
-      border: none;
-
-      background: white;
     }
 
 
-    /* ==============================
-       LOADING
-       ============================== */
+    @media(max-width: 600px) {
 
-    #loading {
+      .login-card {
 
-      position: fixed;
+        width: 90%;
 
-      inset: 0;
+        padding-left: 25px;
 
-      display: none;
+        padding-right: 25px;
+      }
 
-      align-items: center;
+      h2 {
 
-      justify-content: center;
+        font-size: 26px;
+      }
 
-      background: rgba(255,255,255,0.85);
-
-      z-index: 999;
-    }
-
-
-    .loading-box {
-
-      padding: 25px 35px;
-
-      background: white;
-
-      border-radius: 12px;
-
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-
-      text-align: center;
     }
 
   </style>
@@ -438,393 +195,91 @@
 <body>
 
 
-<!-- =========================================
-     LOGIN
-     ========================================= -->
-
-<div id="login-screen">
-
   <div class="login-card">
 
     <img
       src="https://raw.githubusercontent.com/zonemaster24/release/refs/heads/main/banner.png"
+      alt="Mr. Renz"
       class="login-banner"
-      alt="My Dashboard"
     >
 
-    <h2>My Dashboard</h2>
 
-    <p id="login-message">
-      Checking your Google Workspace account...
+    <h2>
+      My Dashboard
+    </h2>
+
+
+    <p>
+      Click below to launch your secure dashboard session.
     </p>
 
-    <div id="user-email"></div>
 
     <button
-      id="login-button"
-      disabled
-      onclick="enterDashboard()">
+      class="btn-signin"
+      onclick="openDashboard()">
 
-      Checking Account...
+      Sign in with Google
 
     </button>
 
-    <div id="status"></div>
-
-    <div id="error"></div>
-
-  </div>
-
-</div>
-
-
-<!-- =========================================
-     DASHBOARD
-     ========================================= -->
-
-<div id="dashboard">
-
-  <div class="dashboard-header">
-
-    <div class="dashboard-title">
-      My Dashboard
-    </div>
 
     <div
-      class="logged-user"
-      id="header-user">
-    </div>
+      id="status"
+      class="status">
 
-  </div>
-
-
-  <div class="dashboard-body">
-
-
-    <!-- LEFT MENU -->
-
-    <div class="sidebar">
-
-      <div class="menu-title">
-        Applications
-      </div>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'ADMIN_PORTAL_URL')">
-
-        Admin Portal
-
-      </button>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'PARENT_EMAIL_URL')">
-
-        Update Parent Email
-
-      </button>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'EMAIL_PHOTO_URL')">
-
-        Update Email Photo
-
-      </button>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'EMAIL_GROUPS_URL')">
-
-        Update Email Groups
-
-      </button>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'DELIVERY_NOTE_URL')">
-
-        Delivery Note
-
-      </button>
-
-
-      <button
-        class="menu-button"
-        onclick="openApp(this, 'ID_PRINTING_URL')">
-
-        ID Printing
-
-      </button>
-
-
-    </div>
-
-
-    <!-- RIGHT CONTENT -->
-
-    <div class="content">
-
-
-      <div id="welcome-screen">
-
-        <div>
-
-          <h2>
-            Welcome to My Dashboard
-          </h2>
-
-          <p>
-            Select an application from the menu.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <iframe
-        id="app-frame"
-        class="app-frame"
-        allow="camera; microphone">
-
-      </iframe>
-
+      Opening secure dashboard...
 
     </div>
 
   </div>
 
-</div>
 
+  <script>
 
-<!-- =========================================
-     LOADING
-     ========================================= -->
+    /*
+     * YOUR APPS SCRIPT WEB APP
+     *
+     * Replace this URL with the /exec URL
+     * of your MyDashboard Apps Script.
+     */
 
-<div id="loading">
+    const DASHBOARD_URL =
+      "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
 
-  <div class="loading-box">
 
-    Loading...
+    function openDashboard() {
 
-  </div>
+      const button =
+        document.querySelector(".btn-signin");
 
-</div>
+      const status =
+        document.getElementById("status");
 
 
+      button.disabled = true;
 
-<script>
+      button.innerHTML =
+        "Opening Dashboard...";
 
+      status.style.display =
+        "block";
 
-/* =========================================
-   USER INFORMATION FROM CODE.GS
-   ========================================= */
 
-var isAuthenticated =
-  <?!= isAuthenticated ? "true" : "false" ?>;
+      /*
+       * IMPORTANT:
+       *
+       * Do NOT put the Apps Script inside an iframe
+       * on this GitHub page.
+       *
+       * Navigate directly to the Apps Script URL.
+       */
 
-var userEmail =
-  <?!= JSON.stringify(userEmail || "") ?>;
+      window.location.href =
+        DASHBOARD_URL;
 
+    }
 
-
-/* =========================================
-   PAGE START
-   ========================================= */
-
-window.onload = function() {
-
-  if (isAuthenticated && userEmail) {
-
-    showAuthenticatedUser();
-
-  } else {
-
-    showNotAuthenticated();
-
-  }
-
-};
-
-
-
-/* =========================================
-   AUTHENTICATED USER
-   ========================================= */
-
-function showAuthenticatedUser() {
-
-  document.getElementById("login-message").innerHTML =
-    "You are signed in with your Google Workspace account.";
-
-  document.getElementById("user-email").style.display =
-    "block";
-
-  document.getElementById("user-email").innerHTML =
-    userEmail;
-
-  document.getElementById("login-button").disabled =
-    false;
-
-  document.getElementById("login-button").innerHTML =
-    "Enter Dashboard";
-
-  document.getElementById("status").innerHTML =
-    "Account verified.";
-
-}
-
-
-
-/* =========================================
-   NOT AUTHENTICATED
-   ========================================= */
-
-function showNotAuthenticated() {
-
-  document.getElementById("login-message").innerHTML =
-    "Please sign in with your Google Workspace account.";
-
-  document.getElementById("login-button").disabled =
-    false;
-
-  document.getElementById("login-button").innerHTML =
-    "Sign in with Google";
-
-  document.getElementById("status").innerHTML =
-    "Google authentication is required.";
-
-}
-
-
-
-/* =========================================
-   ENTER DASHBOARD
-   ========================================= */
-
-function enterDashboard() {
-
-  /*
-   * If Google has already authenticated the user,
-   * open the dashboard.
-   */
-
-  if (isAuthenticated && userEmail) {
-
-    document.getElementById("login-screen").style.display =
-      "none";
-
-    document.getElementById("dashboard").style.display =
-      "block";
-
-    document.getElementById("header-user").innerHTML =
-      userEmail;
-
-    return;
-  }
-
-
-  /*
-   * If no email was detected, reload the Apps Script
-   * web app so Google can perform authentication.
-   */
-
-  window.top.location.href =
-    window.location.href;
-
-}
-
-
-
-/* =========================================
-   OPEN APPLICATION
-   ========================================= */
-
-function openApp(button, url) {
-
-  if (
-    !url ||
-    url === "ADMIN_PORTAL_URL" ||
-    url === "PARENT_EMAIL_URL" ||
-    url === "EMAIL_PHOTO_URL" ||
-    url === "EMAIL_GROUPS_URL" ||
-    url === "DELIVERY_NOTE_URL" ||
-    url === "ID_PRINTING_URL"
-  ) {
-
-    alert(
-      "Please replace the application URL in Index.html first."
-    );
-
-    return;
-  }
-
-
-  /* Remove active state */
-
-  var buttons =
-    document.querySelectorAll(".menu-button");
-
-  buttons.forEach(function(btn) {
-
-    btn.classList.remove("active");
-
-  });
-
-
-  /* Set active button */
-
-  button.classList.add("active");
-
-
-  /* Hide welcome */
-
-  document.getElementById("welcome-screen").style.display =
-    "none";
-
-
-  /* Show iframe */
-
-  var frame =
-    document.getElementById("app-frame");
-
-  frame.style.display =
-    "block";
-
-  frame.src =
-    url;
-
-}
-
-
-
-/* =========================================
-   LOADING HELPER
-   ========================================= */
-
-function showLoading() {
-
-  document.getElementById("loading").style.display =
-    "flex";
-
-}
-
-
-function hideLoading() {
-
-  document.getElementById("loading").style.display =
-    "none";
-
-}
-
-</script>
+  </script>
 
 
 </body>
