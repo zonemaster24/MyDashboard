@@ -2,8 +2,6 @@
 <html>
 <head>
     <title>My Dashboard</title>
-    <!-- Load Google Identity Services library -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         body, html { 
             margin: 0; 
@@ -16,9 +14,8 @@
             width: 100%; 
             height: 100%; 
             border: none; 
-            display: none; /* Hidden until login */
+            display: none; 
         }
-        /* Login Screen Styling */
         #login-screen {
             display: flex;
             flex-direction: column;
@@ -33,7 +30,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 350px;
+            max-width: 380px;
             width: 100%;
         }
         .login-banner {
@@ -43,9 +40,24 @@
             margin-bottom: 20px;
         }
         h2 {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #333;
             font-size: 22px;
+        }
+        .btn-signin {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .btn-signin:hover {
+            background-color: #1557b0;
         }
     </style>
 </head>
@@ -55,23 +67,10 @@
     <div id="login-screen">
         <div class="login-card">
             <img src="https://raw.githubusercontent.com/zonemaster24/release/refs/heads/main/banner.png" alt="Organization Banner" class="login-banner">
-            <h2>Sign In</h2>
-            <p style="color: #666; font-size: 14px; margin-bottom: 25px;">Please sign in with your organizational Google account to access your dashboard.</p>
+            <h2>Restricted Access</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Please authenticate with your organizational Google account to load your dashboard.</p>
             
-            <!-- Google Sign-In Button Container -->
-            <div id="g_id_onload"
-                 data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse"
-                 data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-                 data-type="standard"
-                 data-shape="rectangular"
-                 data-theme="outline"
-                 data-text="sign_in_with"
-                 data-size="large"
-                 data-logo_alignment="left">
-            </div>
+            <button class="btn-signin" onclick="authenticateUser()">Sign In via Google</button>
         </div>
     </div>
 
@@ -79,13 +78,22 @@
     <iframe id="dashboard-frame" src="https://script.google.com/macros/s/AKfycbxng3MpF1aMIhXiTST7ySDn84OYSlVNV7hDo2rnu8exyRcn3H5roUGkztiV1IugDPQ/exec"></iframe>
 
     <script>
-        function handleCredentialResponse(response) {
-            // Decoding the JWT token to verify user info if needed
-            console.log="Encoded JWT ID token: " + response.credential;
-            
-            // Hide login screen and show the dashboard iframe
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('dashboard-frame').style.display = 'block';
+        function authenticateUser() {
+            // Call backend to verify credentials/session
+            google.script.run
+                .withSuccessHandler(function(result) {
+                    if (result.authorized) {
+                        // Hide login screen and display dashboard
+                        document.getElementById('login-screen').style.display = 'none';
+                        document.getElementById('dashboard-frame').style.display = 'block';
+                    } else {
+                        alert("Access denied. Please ensure you are logged into your authorized organizational account.");
+                    }
+                })
+                .withFailureHandler(function(error) {
+                    alert("Authentication failed: " + error.message);
+                })
+                .checkUserAccess();
         }
     </script>
 
