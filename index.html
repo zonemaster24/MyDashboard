@@ -53,8 +53,9 @@
             width: 160px; 
             height: 160px;
             object-fit: cover;
-            
-        
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
             z-index: 10;
         }
 
@@ -103,7 +104,9 @@
             <img src="https://raw.githubusercontent.com/zonemaster24/release/refs/heads/main/banner.png" alt="Mr. Renzo Banner" class="login-banner">
             
             <!-- Text Content -->
-           
+            <h2>Restricted Access</h2>
+            <p>Please authenticate with your organizational Google account to load your dashboard.</p>
+            
             <!-- Sign-In Button -->
             <button class="btn-signin" onclick="authenticateUser()">Sign In via Google</button>
         </div>
