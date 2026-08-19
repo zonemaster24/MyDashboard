@@ -23,38 +23,188 @@
 
     body {
       font-family:
-        'Segoe UI',
+        "Segoe UI",
         Tahoma,
         Geneva,
         Verdana,
         sans-serif;
 
-      background: #edf2f7;
+      min-height: 100vh;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
       overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(0, 229, 255, 0.18),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(151, 71, 255, 0.20),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 50% 50%,
+          rgba(0, 255, 170, 0.06),
+          transparent 50%
+        ),
+        #050816;
     }
 
-    .login-card {
-      background: #ffffff;
 
+    /* Animated neon background */
+
+    .background-grid {
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image:
+        linear-gradient(
+          rgba(0, 229, 255, 0.06) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(0, 229, 255, 0.06) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        45px 45px;
+
+      mask-image:
+        radial-gradient(
+          circle at center,
+          black,
+          transparent 80%
+        );
+
+      animation:
+        gridMove 15s linear infinite;
+    }
+
+
+    @keyframes gridMove {
+
+      from {
+        transform: perspective(500px)
+          rotateX(0deg)
+          translateY(0);
+      }
+
+      to {
+        transform: perspective(500px)
+          rotateX(0deg)
+          translateY(45px);
+      }
+
+    }
+
+
+    /* Main card */
+
+    .login-card {
       width: 475px;
       max-width: 90%;
 
-      padding: 40px;
-      padding-top: 135px;
+      padding:
+        135px 40px 42px;
 
-      border-radius: 20px;
+      border-radius: 24px;
 
       text-align: center;
+
       position: relative;
 
+      background:
+        rgba(8, 15, 35, 0.78);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border:
+        1px solid
+        rgba(0, 229, 255, 0.45);
+
       box-shadow:
-        0 15px 40px rgba(0,0,0,0.12);
+        0 0 15px rgba(0, 229, 255, 0.30),
+        0 0 40px rgba(0, 229, 255, 0.14),
+        0 0 80px rgba(151, 71, 255, 0.15),
+        0 25px 70px rgba(0, 0, 0, 0.50);
+
+      animation:
+        cardGlow 3s ease-in-out infinite alternate;
     }
+
+
+    @keyframes cardGlow {
+
+      from {
+
+        box-shadow:
+          0 0 15px rgba(0, 229, 255, 0.25),
+          0 0 35px rgba(0, 229, 255, 0.10),
+          0 0 70px rgba(151, 71, 255, 0.12),
+          0 25px 70px rgba(0, 0, 0, 0.50);
+
+      }
+
+      to {
+
+        box-shadow:
+          0 0 25px rgba(0, 229, 255, 0.50),
+          0 0 55px rgba(0, 229, 255, 0.20),
+          0 0 90px rgba(151, 71, 255, 0.25),
+          0 25px 70px rgba(0, 0, 0, 0.55);
+
+      }
+
+    }
+
+
+    /* Top neon line */
+
+    .login-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 12%;
+      right: 12%;
+
+      height: 2px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #00e5ff,
+          #9b5cff,
+          #00e5ff,
+          transparent
+        );
+
+      box-shadow:
+        0 0 12px #00e5ff,
+        0 0 25px #9b5cff;
+
+      border-radius: 50%;
+    }
+
+
+    /* Circular banner */
 
     .login-banner {
       position: absolute;
@@ -65,94 +215,333 @@
       left: 50%;
       top: -95px;
 
-      transform: translateX(-50%);
+      transform:
+        translateX(-50%);
 
       object-fit: cover;
 
       border-radius: 50%;
-      border: 6px solid #ffffff;
+
+      border:
+        4px solid
+        #00e5ff;
+
+      padding: 4px;
+
+      background:
+        #07101f;
 
       box-shadow:
-        0 8px 25px rgba(0,0,0,0.18);
+        0 0 12px #00e5ff,
+        0 0 30px rgba(0, 229, 255, 0.75),
+        0 0 60px rgba(151, 71, 255, 0.40);
+
+      animation:
+        imageGlow 2.5s ease-in-out infinite alternate;
     }
+
+
+    @keyframes imageGlow {
+
+      from {
+
+        box-shadow:
+          0 0 12px #00e5ff,
+          0 0 25px rgba(0, 229, 255, 0.60),
+          0 0 50px rgba(151, 71, 255, 0.25);
+
+      }
+
+      to {
+
+        box-shadow:
+          0 0 20px #00e5ff,
+          0 0 45px rgba(0, 229, 255, 0.90),
+          0 0 75px rgba(151, 71, 255, 0.60);
+
+      }
+
+    }
+
 
     h2 {
-      margin: 0 0 12px;
+      margin:
+        0 0 14px;
 
-      color: #12345b;
+      color:
+        #f7fbff;
 
-      font-size: 32px;
-      font-weight: 600;
+      font-size:
+        34px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        0.5px;
+
+      text-shadow:
+        0 0 10px rgba(0, 229, 255, 0.45);
     }
+
+
+    .neon-title {
+      color:
+        #00e5ff;
+
+      text-shadow:
+        0 0 8px #00e5ff,
+        0 0 20px rgba(0, 229, 255, 0.70);
+    }
+
 
     p {
-      color: #718096;
+      color:
+        #9eabc0;
 
-      font-size: 17px;
+      font-size:
+        16px;
 
-      margin: 0 0 30px;
+      margin:
+        0 0 32px;
 
-      line-height: 1.5;
+      line-height:
+        1.6;
     }
+
+
+    /* Sign in button */
 
     .btn-signin {
       width: 100%;
 
-      padding: 15px 20px;
+      padding:
+        16px 20px;
 
-      border: none;
-      border-radius: 9px;
+      border:
+        1px solid
+        rgba(0, 229, 255, 0.80);
 
-      background: #4285f4;
-      color: white;
+      border-radius:
+        12px;
 
-      font-size: 17px;
-      font-weight: 600;
+      background:
+        linear-gradient(
+          135deg,
+          #006d9c,
+          #0066cc,
+          #6b35d9
+        );
 
-      cursor: pointer;
+      color:
+        #ffffff;
+
+      font-size:
+        17px;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        0.3px;
+
+      cursor:
+        pointer;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
 
       box-shadow:
-        0 4px 8px rgba(66,133,244,0.25);
+        0 0 12px rgba(0, 229, 255, 0.35),
+        inset 0 0 15px rgba(255, 255, 255, 0.08);
 
       transition:
-        background 0.2s,
-        transform 0.2s;
+        transform 0.2s,
+        box-shadow 0.2s,
+        filter 0.2s;
     }
+
+
+    .btn-signin::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -100%;
+
+      width: 60%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.35),
+          transparent
+        );
+
+      transform:
+        skewX(-25deg);
+
+      transition:
+        left 0.6s ease;
+    }
+
 
     .btn-signin:hover {
-      background: #357ae8;
-      transform: translateY(-1px);
+
+      transform:
+        translateY(-3px);
+
+      filter:
+        brightness(1.15);
+
+      box-shadow:
+        0 0 18px rgba(0, 229, 255, 0.70),
+        0 0 45px rgba(151, 71, 255, 0.35),
+        inset 0 0 15px rgba(255,255,255,0.10);
     }
+
+
+    .btn-signin:hover::before {
+      left: 150%;
+    }
+
 
     .btn-signin:active {
-      transform: translateY(0);
+      transform:
+        translateY(0);
     }
+
 
     .btn-signin:disabled {
-      opacity: 0.7;
-      cursor: wait;
+      cursor:
+        wait;
+
+      opacity:
+        0.75;
+
+      transform:
+        none;
     }
+
+
+    /* Status */
 
     .status {
-      margin-top: 18px;
+      margin-top:
+        20px;
 
-      color: #718096;
+      color:
+        #00e5ff;
 
-      font-size: 13px;
+      font-size:
+        13px;
 
-      display: none;
+      font-weight:
+        600;
+
+      letter-spacing:
+        0.5px;
+
+      display:
+        none;
+
+      text-shadow:
+        0 0 8px rgba(0, 229, 255, 0.70);
     }
+
+
+    .status::before {
+      content:
+        "●";
+
+      margin-right:
+        8px;
+
+      animation:
+        blink 1s infinite;
+    }
+
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.25;
+      }
+
+    }
+
+
+    /* Bottom security text */
+
+    .security-text {
+      margin-top:
+        22px;
+
+      font-size:
+        11px;
+
+      color:
+        rgba(158, 171, 192, 0.65);
+
+      letter-spacing:
+        1.2px;
+
+      text-transform:
+        uppercase;
+    }
+
+
+    .security-text span {
+      color:
+        #00e5ff;
+    }
+
 
     @media(max-width: 600px) {
 
       .login-card {
-        width: 90%;
-        padding-left: 25px;
-        padding-right: 25px;
+
+        width:
+          90%;
+
+        padding:
+          125px 25px 35px;
       }
 
+
+      .login-banner {
+
+        width:
+          160px;
+
+        height:
+          160px;
+
+        top:
+          -80px;
+      }
+
+
       h2 {
-        font-size: 26px;
+        font-size:
+          28px;
+      }
+
+
+      p {
+        font-size:
+          15px;
       }
 
     }
@@ -163,21 +552,27 @@
 
 <body>
 
+  <div class="background-grid"></div>
+
+
   <div class="login-card">
 
     <img
       src="https://raw.githubusercontent.com/zonemaster24/release/refs/heads/main/banner.png"
-      alt="Mr. Renz"
+      alt="My Dashboard"
       class="login-banner"
     >
 
+
     <h2>
-      My Dashboard
+      MY <span class="neon-title">DASHBOARD</span>
     </h2>
+
 
     <p>
       Click below to launch your secure dashboard session.
     </p>
+
 
     <button
       class="btn-signin"
@@ -188,11 +583,19 @@
 
     </button>
 
+
     <div
       id="status"
       class="status">
 
       Opening secure dashboard...
+
+    </div>
+
+
+    <div class="security-text">
+
+      <span>●</span> Secure Workspace Access
 
     </div>
 
@@ -208,13 +611,19 @@
     function openDashboard() {
 
       const button =
-        document.getElementById("signinButton");
+        document.getElementById(
+          "signinButton"
+        );
 
       const status =
-        document.getElementById("status");
+        document.getElementById(
+          "status"
+        );
 
 
-      button.disabled = true;
+      button.disabled =
+        true;
+
 
       button.innerHTML =
         "Opening Dashboard...";
