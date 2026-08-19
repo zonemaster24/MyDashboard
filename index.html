@@ -22,7 +22,6 @@
     }
 
     body {
-
       font-family:
         'Segoe UI',
         Tahoma,
@@ -33,48 +32,37 @@
       background: #edf2f7;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       overflow: hidden;
     }
 
-
     .login-card {
-
       background: #ffffff;
 
       width: 475px;
-
       max-width: 90%;
 
       padding: 40px;
-
       padding-top: 135px;
 
       border-radius: 20px;
 
       text-align: center;
-
       position: relative;
 
       box-shadow:
         0 15px 40px rgba(0,0,0,0.12);
     }
 
-
     .login-banner {
-
       position: absolute;
 
       width: 190px;
-
       height: 190px;
 
       left: 50%;
-
       top: -95px;
 
       transform: translateX(-50%);
@@ -82,28 +70,22 @@
       object-fit: cover;
 
       border-radius: 50%;
-
       border: 6px solid #ffffff;
 
       box-shadow:
         0 8px 25px rgba(0,0,0,0.18);
     }
 
-
     h2 {
-
       margin: 0 0 12px;
 
       color: #12345b;
 
       font-size: 32px;
-
       font-weight: 600;
     }
 
-
     p {
-
       color: #718096;
 
       font-size: 17px;
@@ -113,23 +95,18 @@
       line-height: 1.5;
     }
 
-
     .btn-signin {
-
       width: 100%;
 
       padding: 15px 20px;
 
       border: none;
-
       border-radius: 9px;
 
       background: #4285f4;
-
       color: white;
 
       font-size: 17px;
-
       font-weight: 600;
 
       cursor: pointer;
@@ -142,23 +119,21 @@
         transform 0.2s;
     }
 
-
     .btn-signin:hover {
-
       background: #357ae8;
-
       transform: translateY(-1px);
     }
 
-
     .btn-signin:active {
-
       transform: translateY(0);
     }
 
+    .btn-signin:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
 
     .status {
-
       margin-top: 18px;
 
       color: #718096;
@@ -168,20 +143,15 @@
       display: none;
     }
 
-
     @media(max-width: 600px) {
 
       .login-card {
-
         width: 90%;
-
         padding-left: 25px;
-
         padding-right: 25px;
       }
 
       h2 {
-
         font-size: 26px;
       }
 
@@ -191,9 +161,7 @@
 
 </head>
 
-
 <body>
-
 
   <div class="login-card">
 
@@ -203,25 +171,22 @@
       class="login-banner"
     >
 
-
     <h2>
       My Dashboard
     </h2>
-
 
     <p>
       Click below to launch your secure dashboard session.
     </p>
 
-
     <button
       class="btn-signin"
+      id="signinButton"
       onclick="openDashboard()">
 
       Sign in with Google
 
     </button>
-
 
     <div
       id="status"
@@ -236,13 +201,6 @@
 
   <script>
 
-    /*
-     * YOUR APPS SCRIPT WEB APP
-     *
-     * Replace this URL with the /exec URL
-     * of your MyDashboard Apps Script.
-     */
-
     const DASHBOARD_URL =
       "https://script.google.com/a/macros/djis.edu.sa/s/AKfycbz3GwKtNNRoe7PoEm7EvPhwVwyelR7lFzGwA7D2MCXi9B40oFe0DzZI4ODhvQsHEuJd/exec";
 
@@ -250,7 +208,7 @@
     function openDashboard() {
 
       const button =
-        document.querySelector(".btn-signin");
+        document.getElementById("signinButton");
 
       const status =
         document.getElementById("status");
@@ -261,27 +219,18 @@
       button.innerHTML =
         "Opening Dashboard...";
 
+
       status.style.display =
         "block";
 
 
-      /*
-       * IMPORTANT:
-       *
-       * Do NOT put the Apps Script inside an iframe
-       * on this GitHub page.
-       *
-       * Navigate directly to the Apps Script URL.
-       */
-
-      window.location.href =
-        DASHBOARD_URL;
+      window.location.assign(
+        DASHBOARD_URL
+      );
 
     }
 
   </script>
 
-
 </body>
-
 </html>
